@@ -2,6 +2,8 @@
 
 This is a port of Bad Apple running on LEGO Spike Prime (45678) and Mindstorms Inventor (51515) (not tested) on stock legacy firmware (1.3.0.0 / 4.0.0.7).
 
+Check out the video [Here](https://www.youtube.com/watch?v=nrx5CHRVuOc)
+
 ## How it works
 
 The program reads the frames and audio data from the filesystem.  
