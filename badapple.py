@@ -1,8 +1,6 @@
 import hub
 import os
 import runtime
-import sys
-import system
 
 
 async def on_start(vm, stack):
