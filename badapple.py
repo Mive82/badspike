@@ -21,7 +21,7 @@ async def on_start(vm, stack):
     time = vm.get_time()
     for _ in range(n_frames - 1):
         time = vm.get_time()
-        hub.display.show(slika)
+        vm.system.display.show(slika)
         b = badapple_file.read(25)
         slika = hub.Image(5, 5, b)
         while vm.get_time() < (time + 33):
