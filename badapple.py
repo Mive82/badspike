@@ -8,14 +8,14 @@ from protocol.ujsonrpc import json_rpc
 
 
 async def on_start(vm, stack):
-    volume = 10
+    volume = 5
     vm.system.sound.volume(volume)
     vm.store.sound_volume(volume)
-    file_size = os.stat("/data/frames")[6]
+    file_size = os.stat("/frames")[6]
     n_frames = file_size // 25
     print(n_frames)
-    badapple_file = open("/data/frames", "rb")
-    vm.system.sound.play("/data/audio")
+    badapple_file = open("/frames", "rb")
+    vm.system.sound.play("/audio")
     b = badapple_file.read(25)
     slika = hub.Image(5, 5, b)
     time = vm.get_time()
@@ -34,17 +34,3 @@ def setup(rpc, system, stop):
     vm = runtime.VirtualMachine(rpc, system, stop, "something_unique")
     vm.register_on_start("another_unique_string", on_start)
     return vm
-
-
-vm = setup(None, system.system, sys.exit)
-if "program_selector" not in json_rpc.methods:
-    json_rpc.add_method("program_selector", json_rpc.methods["program_terminate"])
-
-
-def terminate(params, id):
-    vm.shutdown()
-    json_rpc.methods["program_selector"](params, id)
-
-
-json_rpc.add_method("program_terminate", terminate)
-vm.start()
