@@ -4,8 +4,6 @@ import runtime
 import sys
 import system
 
-from protocol.ujsonrpc import json_rpc
-
 
 async def on_start(vm, stack):
     volume = 5
